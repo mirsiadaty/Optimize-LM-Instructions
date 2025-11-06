@@ -1,0 +1,85 @@
+{
+  "traces": [],
+  "train": [],
+  "demos": [
+    {
+      "augmented": true,
+      "subject": "Re: [opensuse] du -shx issue/question",
+      "sender": "Aaron Kulkis <cmiqlkx91@hotpop.com>",
+      "receiver": "opensuse <wkilxloc@opensuse.org>",
+      "body": "Greg Freemyer wrote:\n> All,\n> \n> I'm running low on space on root, so I just ran cd /; du -shx *\n> \n> I was expecting the -x to cause my mount points to be ignored.  No\n> such luck and I can see that since I explicitly am including /home\n> etc. I'm going to get results for that.\n> \n> Anyone know a simple way to say \"how big are the subdirectories on my\n> root partition?\"\n\nNot I.\n\nLooks like the -x flag on du is broken.\n\n\n",
+      "urls": 0,
+      "phishing": false,
+      "likelihood": 10
+    },
+    {
+      "augmented": true,
+      "subject": "[perl #46011] overload \"0+\" doesn't handle integer results ",
+      "sender": "Zefram <veyjhby-fbuaeanj@perl.org>",
+      "receiver": "ozip-dhyivplsb@netlabs.develooper.com",
+      "body": "# New Ticket Created by  Zefram \n# Please include the string:  [perl #46011]\n# in the subject line of all future correspondence about this issue. \n# \n\n\nThis is a bug report for perl from hzyoze@fysh.org,\ngenerated with the help of perlbug 1.35 running under perl v5.8.8.\n\n\n-----------------------------------------------------------------\n[Please enter your report here]\n\nThis perl is configured with 64-bit integers and 64-bit floats (1+52\nbits of significand).\n\n$ perl -lwe '{ package t0; sub mynum { 36028797018963971 } use overload \"0+\" => \\\\&mynum } print int(t0::mynum); print int(bless({}, \"t0\"))'\n36028797018963971\n36028797018963968\n$\n\n36028797018963971 is 2^55+3.  Its salient feature here is that it's\na native integer that can't be exactly represented as a native float.\nWhen it's returned by the \"0+\" overload function, it's being unnecessarily\nand lossily coerced to float.  This coercion doesn't happen if the\nreturn value of t0::mynum() goes directly into int() without going via\nthe overloading system.\n\n[Please do not change anything below this line]\n-----------------------------------------------------------------\n---\nFlags:\n    category=core\n    severity=low\n---\nSite configuration information for perl v5.8.8:\n\nConfigured by zefram at Fri Jan 19 20:29:50 GMT 2007.\n\nSummary of my perl5 (revision 5 version 8 subversion 8) configuration:\n  Platform:\n    osname=linux, osvers=2.6.8-3-686-smp, archname=i386-linux-thread-multi-64int\n    uname='linux monst.rous.org 2.6.8-3-686-smp #1 smp thu sep 7 04:39:15 utc 2006 i686 gnulinux '\n    config_args='-des -Darchname=i386-linux -Dcccdlflags=-fPIC -Dccdlflags=-rdynamic -Dprefix=/home/zefram/usr/perl/perl_install/perl-5.8.8-i64-f52 -Dman1ext=1 -Dman3ext=3perl -Duselargefiles -Dusethreads -Uafs -Ud_csh -Uusesfio -Uusenm -Duseshrplib -Duse64bitint'\n    hint=recommended, useposix=true, d_sigaction=define\n    usethreads=define use5005threads=undef useithreads=define usemultiplicity=define\n    useperlio=define d_sfio=undef uselargefiles=define usesocks=undef\n    use64bitint=define use64bitall=undef uselongdouble=undef\n    usemymalloc=n, bincompat5005=undef\n  Compiler:\n    cc='cc', ccflags ='-D_REENTRANT -D_GNU_SOURCE -DTHREADS_HAVE_PIDS -fno-strict-aliasing -pipe -I/usr/local/include -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64',\n    optimize='-O2',\n    cppflags='-D_REENTRANT -D_GNU_SOURCE -DTHREADS_HAVE_PIDS -fno-strict-aliasing -pipe -I/usr/local/include'\n    ccversion='', gccversion='3.3.5 (Debian 1:3.3.5-13)', gccosandvers=''\n    intsize=4, longsize=4, ptrsize=4, doublesize=8, byteorder=12345678\n    d_longlong=define, longlongsize=8, d_longdbl=define, longdblsize=12\n    ivtype='long long', ivsize=8, nvtype='double', nvsize=8, Off_t='off_t', lseeksize=8\n    alignbytes=4, prototype=define\n  Linker and Libraries:\n    ld='cc', ldflags =' -L/usr/local/lib'\n    libpth=/usr/local/lib /lib /usr/lib\n    libs=-lnsl -ldl -lm -lcrypt -lutil -lpthread -lc\n    perllibs=-lnsl -ldl -lm -lcrypt -lutil -lpthread -lc\n    libc=/lib/libc-2.3.2.so, so=so, useshrplib=true, libperl=libperl.so\n    gnulibc_version='2.3.2'\n  Dynamic Linking:\n    dlsrc=dl_dlopen.xs, dlext=so, d_dlsymun=undef, ccdlflags='-rdynamic -Wl,-rpath,/home/zefram/usr/perl/perl_install/perl-5.8.8-i64-f52/lib/5.8.8/i386-linux-thread-multi-64int/CORE'\n    cccdlflags='-fPIC', lddlflags='-shared -L/usr/local/lib'\n\nLocally applied patches:\n    \n\n---\n@INC for perl v5.8.8:\n    /home/zefram/usr/perl/perl_install/perl-5.8.8-i64-f52/lib/5.8.8/i386-linux-thread-multi-64int\n    /home/zefram/usr/perl/perl_install/perl-5.8.8-i64-f52/lib/5.8.8\n    /home/zefram/usr/perl/perl_install/perl-5.8.8-i64-f52/lib/site_perl/5.8.8/i386-linux-thread-multi-64int\n    /home/zefram/usr/perl/perl_install/perl-5.8.8-i64-f52/lib/site_perl/5.8.8\n    /home/zefram/usr/perl/perl_install/perl-5.8.8-i64-f52/lib/site_perl\n    .\n\n---\nEnvironment for perl v5.8.8:\n    HOME=/home/zefram\n    LANG (unset)\n    LANGUAGE (unset)\n    LD_LIBRARY_PATH (unset)\n    LOGDIR (unset)\n    PATH=/home/zefram/pub/i686-pc-linux-gnu/bin:/home/zefram/pub/common/bin:/usr/bin:/usr/X11R6/bin:/bin:/usr/local/bin:/usr/games\n    PERL_BADLANG (unset)\n    SHELL=/usr/bin/zsh\n\n\n",
+      "urls": 0,
+      "phishing": false,
+      "likelihood": 10
+    },
+    {
+      "augmented": true,
+      "subject": "Splendid Rx Joy",
+      "sender": "Alva Valencia <akstcaaymnsdgs@aay.com>",
+      "receiver": "carin350@gvc.ceas-challenge.cc",
+      "body": "\nExtraordinary RX Reductions\n\nhttp://imaloneea.spaces.live.com/default.aspx\n\nNOT to use them). \nYou'll easily counter with your \n\nMaria H., Bellevue WA\n\n\n",
+      "urls": 1,
+      "phishing": true,
+      "likelihood": 85
+    },
+    {
+      "subject": "CNN.com Daily Top 10",
+      "sender": "Daily Top 10 <Kandace-ukodibeh@victoriaco.com>",
+      "receiver": "user2.1@gvc.ceas-challenge.cc",
+      "body": ">+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+= >THE DAILY TOP 10 >from CNN.com >Top videos and stories as of: Aug  1, 2008  3:58 PM EDT >+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+= TOP 10 VIDEOS 1. MONTAUK 'MONSTER' http://www.cnn.com/video/partners/email/index.html?url=/video/us/2008/07/31/moos.montauk.monster.cnn Is it a devil dog? Is it a turtle? Is it the Montauk Monster? CNN's Jeanne Moos asks, \"what is this thing?\" 2. RACY PHOTOS OF TODDLER'S MOM http://www.cnn.com/video/partners/email/index.html?url=/video/crime/2008/07/31/ng.racy.photos.cnn 3. NEWS OF THE ABSURD EPISODE 54 http://www.cnn.com/video/partners/email/index.html?url=/video/podcasts/absurd/site/2008/08/01/nota.episode.54.cnn 4. POLICE BEATING DISPUTE http://www.cnn.com/video/partners/email/index.html?url=/video/us/2008/07/31/levs.police.video.cnn 5. MOM PLEADS FOR GIRL'S RETURN http://www.cnn.com/video/partners/email/index.html?url=/video/crime/2008/08/01/hill.boss.reigh.plea.cnn 6. DEFENDANT FAKES HEART ATTACK http://www.cnn.com/video/partners/email/index.html?url=/video/crime/2008/08/01/dnt.fake.heart.attack.mxf.whio 7. KILLER CARRIED VICTIM'S HEAD http://www.cnn.com/video/partners/email/index.html?url=/video/world/2008/07/31/natpkg.can.bus.decapitation.ctv 8. MURDER CONFESSION RECANTED http://www.cnn.com/video/partners/email/index.html?url=/video/world/2008/08/01/blake.brazil.teen.murder.itn 9. ANTHRAX SUSPECT'S HOME http://www.cnn.com/video/partners/email/index.html?url=/video/us/2008/08/01/von.dr.bruce.ivins.home.cnn 10. HECKLERS INTERRUPT OBAMA TALK http://www.cnn.com/video/partners/email/index.html?url=/video/politics/2008/08/01/sot.fl.obama.protesters.baynews9 TOP 10 STORIES 1. SUSPECT IN BEHEADING IDENTIFIED http://www.cnn.com/2008/WORLD/americas/08/01/canada.beheading/index.html Canadian police say Vince Weiguang Li, 40, of Edmonton is charged with second-degree murder in the beheading of a man on a bus. 2. JUDGE TAKEN OFF LAST JENA 6 CASES http://www.cnn.com/2008/CRIME/08/01/jena6.appeal/index.html 3. PEOPLE MAG GETS PITT-JOLIE PIX http://www.cnn.com/2008/SHOWBIZ/Movies/08/01/brangelina.photos.ap/index.html 4. ATTACK IN TORONTO CALLED RACIAL http://www.cnn.com/2008/WORLD/americas/08/01/canada.attack.ap/index.html 5. IREPORTERS' UNUSUAL NAMES http://www.cnn.com/2008/LIVING/08/01/unusual.names.irpt/index.html 6. MOTHER PLEADS FOR CHILD'S RETURN http://www.cnn.com/2008/CRIME/08/01/rockefeller.kidnapping/index.html 7. KARADZIC: I MADE DEAL WITH U.S. http://www.cnn.com/2008/WORLD/europe/08/01/karadzic.trial/index.html 8. SUSPECT ARRESTED IN SWIM KILLINGS http://www.cnn.com/2008/CRIME/08/01/wisconsin.shooting.ap/index.html 9. ANTHRAX SUSPECT APPARENT SUICIDE http://www.cnn.com/2008/CRIME/08/01/anthrax.death/index.html 10. MCCAIN: OBAMA CRITICISM 'FAIR' http://www.cnn.com/2008/POLITICS/08/01/campaign.wrap/index.html CNN, The Most Trusted Name in News >    Cable News Network LP, LLLP.                       < >    One CNN Center, Atlanta, Georgia 30303             < >    2008 Cable News Network LP, LLLP.                  < >    A Time Warner Company.                             < >    All Rights Reserved.                               < ========================================================= =   Please send comments or suggestions by going to     = =           http://www.cnn.com/feedback/                = =                                                       = =      Read our privacy guidelines by going to          = =         http://www.cnn.com/privacy.html               = ========================================================= You have agreed to receive this email from CNN.com as a result of your CNN.com preference settings. To manage your settings, go to: http://www.cnn.com/linkto/bn.manage.html To unsubscribe from the Daily Top 10, go to http://cgi.cnn.com/m/clik?e=f4e57063bddcf102a8b9b03953ca7f15@gvc.ceas-challenge.cc&l=cnn-dailytop10",
+      "urls": 1,
+      "phishing": true
+    }
+  ],
+  "signature": {
+    "instructions": "Analyze the following email details and determine the likelihood that it is a phishing attempt. Consider factors such as the subject line, sender address, body content, and any URLs included. Rate the phishing likelihood on a scale from 0 to 100, where 0 means not a phishing email and 100 means definitively a phishing email. Ensure to highlight any suspicious elements that influenced your assessment.",
+    "fields": [
+      {
+        "prefix": "Subject:",
+        "description": "subject of email"
+      },
+      {
+        "prefix": "Sender:",
+        "description": "sender of email"
+      },
+      {
+        "prefix": "Receiver:",
+        "description": "receiver of email"
+      },
+      {
+        "prefix": "Body:",
+        "description": "body of email"
+      },
+      {
+        "prefix": "Urls:",
+        "description": "1 when email has urls"
+      },
+      {
+        "prefix": "Phishing:",
+        "description": "if email is phishing (Ture/False)"
+      },
+      {
+        "prefix": "Likelihood:",
+        "description": "integer in the range 0 to 100, that is the likelihood the email is phishing"
+      }
+    ]
+  },
+  "lm": null,
+  "metadata": {
+    "dependency_versions": {
+      "python": "3.10",
+      "dspy": "3.0.3",
+      "cloudpickle": "3.1"
+    }
+  }
+}
