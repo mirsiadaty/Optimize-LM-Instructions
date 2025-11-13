@@ -1,0 +1,98 @@
+
+iter 0
+prompt:
+ <|start|>system<|message|>You are ChatGPT, a large language model trained by OpenAI.
+Knowledge cutoff: 2024-06
+Current date: 2025-06-28
+Reasoning: low
+# Valid channels: analysis, final. Channel must be included for every message.<|end|>
+<|start|>developer<|message|>
+YOU ARE A HELPFUL RESEARCH ASSISTANT. IF YOU DO NOT KNOW THE ANSWER, REPLY I DON'T KNOW, DON'T MAKE THINGS UP.
+<|end|>
+<|start|>user<|message|>
+YOU ARE AN EXPERT PHISHING EMAIL CLASSIFIER.
+QUANTIFY YOUR CONFIDENCE IN THE FOLLOWING EMAIL BEING NON-PHISHING.
+PROVIDE A CONFIDENCE SCORE BETWEEN 0 AND 100.
+MARK UP THE SCORE IN THE PAIR OF TAGS <NONPHISHINGCONFIDENCESCORE> </NONPHISHINGCONFIDENCESCORE>.
+USE THE FOLLOWING PHISHING-CHECKLIST WHEN QUANTIFYING THE NONPHISHINGCONFIDENCESCORE.
+
+<PHISHINGCHECKLIST>
+## 1️⃣ Header‑level checks  
+
+| # | Check | What to look for | Why it matters |
+|---|-------|------------------|----------------|
+| 1.1 | **From address vs. display name** | The “From:” header shows `John Doe <john.doe@bankofamerica.com>` but the actual mailbox is `john.doe@bank0famerica.co` (notice the zero). | Attackers often spoof a familiar name while using a look‑alike domain. |
+| 1.2 | **SPF/DKIM/DMARC validation** | Email fails SPF (`softfail`) or DKIM signature is missing/invalid, and DMARC policy returns `reject` or `quarantine`. | Legitimate senders usually have these records correctly configured; failures suggest spoofing. |
+| 1.3 | **Reply‑to address mismatch** | “From:” is `support@paypal.com` but “Reply-To:” points to `support123@gmail.com`. | Phishers redirect replies to a personal account they control. |
+| 1.4 | **Received‑by / Received‑from chain** | The email traverses unknown or suspicious relay servers (e.g., IPs from high‑risk countries, cloud services not used by the organization). | Helps spot forged origins. |
+| 1.5 | **Message‑ID domain mismatch** | Message‑ID is `<12345@randommail.xyz>` while the sender claims to be `@microsoft.com`. | Inconsistent IDs are a red flag. |
+
+---
+
+## 2️⃣ Content‑level checks  
+
+| # | Check | What to look for | Why it matters |
+|---|-------|------------------|----------------|
+| 2.1 | **Urgent or threatening language** | Phrases like “Your account will be closed TODAY”, “Immediate action required”, “Verify within 24 h”. | Phishers create pressure to bypass rational thinking. |
+| 2.2 | **Requests for credentials or personal data** | “Please reply with your password”, “Enter your SSN here”, “Confirm your bank details”. | Legitimate organizations never ask for passwords via email. |
+| 2.3 | **Unexpected attachments** | `.exe`, `.scr`, `.zip` (especially if the body says “see attached invoice”). | Attachments are a common malware delivery vector. |
+| 2.4 | **Links with mismatched display vs. actual URL** | Text shows `https://login.microsoft.com` but the href points to `http://m1crosoft-login.secure‑verify.net`. Hovering reveals the real destination. | Attackers hide malicious domains behind trusted text. |
+| 2.5 | **URL shorteners or encoded URLs** | Use of bit.ly, tinyurl, or hex/ base64‑encoded strings in links. | Obfuscates the final landing page. |
+| 2.6 | **Domain similarity (homoglyphs, typosquatting)** | `paypa1.com` (digit “1”), `g00gle.com` (double “o”), `apple-support.co`. | Human eyes often miss subtle character changes. |
+| 2.7 | **Poor grammar / spelling** | Misspelled brand names (“Microsft”, “Gooogle”) or awkward phrasing. | Many phishing kits are generated automatically and contain errors. |
+| 2.8 | **Generic greetings** | “Dear Customer”, “Hello User”, instead of your real name. | Legitimate services usually personalize the greeting (or at least include part of your account ID). |
+| 2.9 | **Inconsistent branding** | Logos look blurry, colors are off, or HTML layout is broken. | Phishers often copy‑paste assets without proper styling. |
+| 2.10 | **Embedded scripts / tracking pixels** | `<script>` tags, `onload` JavaScript, or hidden iframes. | Modern email clients block them, but their presence indicates a malicious intent. |
+
+---
+
+## 3️⃣ Behavioral / Contextual checks  
+
+| # | Check | What to look for |
+|---|-------|------------------|
+| 3.1 | **Unexpected timing** | You receive a “password reset” email when you never requested one. |
+| 3.2 | **Unusual request type** | A bank asks you to verify your account via a Google Form or a third‑party survey. |
+| 3.3 | **Cross‑channel inconsistency** | The email claims an issue, but the organization’s official app/website shows no alerts. |
+| 3.4 | **Sender not in address book** | New contact you have never communicated with before. |
+| 3.5 | **Email size / encoding anomalies** | Very large base64‑encoded blocks, or mismatched `Content-Type` headers (e.g., claiming `text/html` but containing binary data). |
+
+---
+
+### TL;DR Checklist (Copy‑paste)
+
+```
+[ ] SPF/DKIM/DMARC pass?
+[ ] Sender address matches official domain exactly?
+[ ] Reply‑To same as From?
+[ ] No urgent/threatening language?
+[ ] No request for credentials or personal data?
+[ ] No unexpected attachments (exe, zip, vbs…)?
+[ ] All links point to known, correct domains (hover to verify)?
+[ ] No URL shorteners or encoded URLs?
+[ ] No misspellings/poor grammar?
+[ ] Greeting is personalized, not generic?
+[ ] Branding looks legitimate (logo quality, colors)?
+[ ] No hidden scripts or iframes in HTML?
+</PHISHINGCHECKLIST>
+
+
+HERE IS THE EMAIL TO SCORE FOR NONPHISHINGCONFIDENCESCORE:
+
+
+
+
+<SUBJECT>ForCustomersForOurCustomersAllProducts</SUBJECT>
+<SENDER>Tanya Ashby <dilutionw1@eisenbrauns.com></SENDER>
+<RECEIVER>user2.1-ext1@gvc.ceas-challenge.cc</RECEIVER>
+<BODY>
+MoneybackPolicyToAllCountriesAvailable
+http://urbyvw.bay.livefilestore.com/y1pmy9A_dLKX-FFz0w4eklo9u3A1nf0KD-AuikiAqSCQa44DfOvipYHADjSURpTGkyCgseUU-E58pFvDdKtql02dA/index.html
+
+
+</BODY>
+<|end|>
+<|start|>assistant
+
+=========================================================
+
+
